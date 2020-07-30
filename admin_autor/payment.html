@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pago</title>
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Owner CSS -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body{
+      background-color: #161616 ;
+    }
+    p{
+      font-size: 15px;
+    }
+    .btn{
+      max-height: 60px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="index.html"><img src="img/logo1.png" class="img-fluid" alt=""> talisman music</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item active">
+          <a class="nav-link" href="../home.html">Descubrir canciones</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="../admin_user/login.html">Ingresa como Fan</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="../admin_autor/login.html">Ingresa como músico</a>
+        </li>
+      </ul>
+    
+    </div>
+    </div>
+ </nav>  
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="card">
+          <div class="card-body p-5">
+          <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
+              <i class="fa fa-credit-card"></i> Tarjeta de crédito</a></li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+              <i class="fab fa-paypal"></i>  Paypal</a></li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
+              <i class="fa fa-university"></i>  Transferencia bancaria</a></li>
+          </ul>
+    
+          <div class="tab-content">
+          <div class="tab-pane fade show active" id="nav-tab-card">
+            <form role="form">
+            <div class="form-group">
+              <label for="username">Nombre titular tarjeta</label>
+              <input type="text" class="form-control" name="username" placeholder="" required="">
+            </div> <!-- form-group.// -->
+    
+            <div class="form-group">
+              <label for="cardNumber">Número de tarjeta</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="cardNumber" placeholder="">
+                <div class="input-group-append">
+                  <span class="input-group-text text-muted">
+                    <i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
+                    <i class="fab fa-cc-mastercard"></i> 
+                  </span>
+                </div>
+              </div>
+            </div> <!-- form-group.// -->
+    
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label><span class="hidden-xs">Expira</span> </label>
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="MM" name="">
+                          <input type="number" class="form-control" placeholder="YY" name="">
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                        <input type="number" class="form-control" required="">
+                    </div> <!-- form-group.// -->
+                </div>
+            </div> <!-- row.// -->
+            <button class="subscribe btn btn-primary btn-block" type="button"> Aceptar  </button>
+            </form>
+          </div> <!-- tab-pane.// -->
+          <div class="tab-pane fade" id="nav-tab-paypal">
+          <p>Paypal es la manera más fácil de comprar por internet</p>
+          <p>
+          <button type="button" class="paypal btn btn-primary"> <i class="fab fa-paypal"></i> Pagar </button>
+          </p>
+          <p><strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. </p>
+          </div>
+          <div class="tab-pane fade" id="nav-tab-bank">
+          <p>Detalles de cuenta de banco</p>
+          <dl class="param">
+            <dt>BANCO: </dt>
+            <dd> BANCO DE CHILE</dd>
+          </dl>
+          <dl class="param">
+            <dt>NÚMERO DE CUENTA: </dt>
+            <dd> 1234 5678 9012 3456</dd>
+          </dl>
+          <dl class="param">
+            <dt>CORREO: </dt>
+            <dd> deposito@tlsmnmusic.com</dd>
+          </dl>
+          <p><strong>Nota:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. </p>
+          </div> <!-- tab-pane.// -->
+          </div> <!-- tab-content .// -->
+    
+          </div> <!-- card-body.// -->
+          </div> <!-- card.// -->
+      
+      </div>
+      <div class="col-sm-5">
+        <div class="card">
+          <div class="card-body px-5">
+            <h2>Resumen de compra</h2>
+            <hr>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <h6 class="my-0">Mi sueño</h6>
+                    <small class="text-muted">Trémolo violenta</small>
+                  </div>
+                  <div class="col-lg-4">
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" id="quantity" class="form-control" value="10">
+                  </div>
+                </div>
+                <span class="text-muted">$5</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between bg-light">
+                <div class="text-success">
+                  <h6 class="my-0">Código promo</h6>
+                  <small>TLSMNMUSIC</small>
+                </div>
+                <span class="text-success">-$5</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total (USD)</span>
+                <strong>$45</strong>
+              </li>
+            </ul>
+            <form class="card p-2">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Código promo">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-success">Canjear</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      <div class="social d-flex justify-content-center">
+        <a href="https://www.twitter.com" class="mx-2">
+          <i class="fab fa-twitter fa-2x"></i>
+        </a>
+        <a href="https://www.facebook.com/Talisman-Music-1953193684971869" class="mx-2">
+          <i class="fab fa-facebook-f fa-2x"></i>
+        </a>
+        <a href="https://www.instagram.com" class="mx-2">
+          <i class="fab fa-instagram fa-2x"></i>
+        </a>
+      </div>
+      <hr>
+      <a href="legal.html"> Legal</a>
+    </div>
+  
+    <div class="container">
+      Copyright &copy; tlsmn music 2020
+    </div>
+  </footer>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

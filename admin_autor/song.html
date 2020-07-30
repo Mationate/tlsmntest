@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canción</title>
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Owner CSS -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body{
+      background-color: #161616 ;
+    }
+    .pay-btn{
+      max-width: 200px;
+    }
+    .imagebox {
+      background: black;
+      padding: 0px;
+      position: relative;
+      text-align: center;
+      width: 100%;
+    }
+    .imagebox img {
+      opacity: 1;
+      transition: 0.5s opacity;
+    }
+    .imagebox .imagebox-desc {
+      background-color: rgba(0, 0, 0, 0.6);
+      bottom: 0px;
+      color: white;
+      font-size: 1em;
+      left: 0px;
+      padding: 10px 15px;
+      position: absolute;
+      transition: 0.5s padding;
+      text-align: center;
+      width: 100%;
+    }
+    .imagebox:hover img {
+      opacity: 0.7;
+    }
+    .imagebox:hover .imagebox-desc {
+      padding-bottom: 10%;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+    CanvasJS.addCultureInfo("es",
+                    {
+                        decimalSeparator: ".",
+                        digitGroupSeparator: ",",
+                        printText: "Imprimir",
+                        saveJPGText: "Guardar JPG",
+                        savePNGText: "Guardar PNG",
+                        resetText: "Ampliar todo",
+                        menuText: "Más opciones",
+                        panText: "Deslizar",
+                        shortMonths: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                   });
+    var dataPoints = [];
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light1", // "light1", "light2", "dark1", "dark2"
+      culture: "es",
+      zoomEnabled: true,
+      exportEnabled: true,
+      title: {
+        text: "Stock Price: Mi Sueño"
+      },
+      subtitles: [{
+        text: "USD"
+      }],
+      axisX: {
+        interval: 1,
+        valueFormatString: "MMM"
+      },
+      axisY: {
+        includeZero: false,
+        prefix: "$",
+        title: "Precio"
+      },
+      toolTip: {
+        content: "Fecha: {x}<br /><strong>Precio:</strong><br />Apertura: {y[0]}, Cierre: {y[3]}<br />+ Alto: {y[1]}, + Bajo: {y[2]}"
+      },
+      data: [{
+        type: "candlestick",
+        yValueFormatString: "$##0.00",
+        dataPoints: dataPoints
+      }]
+    });
+    
+    $.get("https://canvasjs.com/data/gallery/javascript/netflix-stock-price.csv", getDataPointsFromCSV);
+    
+    function getDataPointsFromCSV(csv) {
+      var csvLines = points = [];
+      csvLines = csv.split(/[\r?\n|\r|\n]+/);
+      for (var i = 0; i < csvLines.length; i++) {
+        if (csvLines[i].length > 0) {
+          points = csvLines[i].split(",");
+          dataPoints.push({
+            x: new Date(
+              parseInt(points[0].split("-")[0]),
+              parseInt(points[0].split("-")[1]),
+              parseInt(points[0].split("-")[2])
+            ),
+            y: [
+              parseFloat(points[1]),
+              parseFloat(points[2]),
+              parseFloat(points[3]),
+              parseFloat(points[4])
+            ]
+          });
+        }
+      }
+      chart.render();
+    }
+    
+    }
+    </script>
+</head>
+  
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="../index.html"><img src="img/logo1.png" class="img-fluid" alt=""> talisman music</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../home.html">Descubrir canciones</a>
+          </li>
+          
+          <li class="nav-item">
+          <a class="nav-link" href="../admin_user/login.html">Ingresa como Fan</a> 
+          </li>    
+          <li class="nav-item">
+            <a class="nav-link" href="../admin_autor/login.html">Ingresa como músico</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- container -->
+  <hr>  
+  <div class="container">
+  <div class="bg-white rounded">
+    <div class="row">
+      <div class="col-sm-7">
+        <img class="img-fluid rounded" src="https://images.unsplash.com/photo-1557664026-fa5e87778f93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+        
+        <hr>
+        <div class="social d-flex justify-content-center">
+          <a title="Youtube" href="https://www.youtube.com" class="mx-2">
+            <i class="fab fa-youtube fa-2x"></i>
+          </a>
+          <a title="Spotify" href="https://www.spotify.com" class="mx-2">
+            <i class="fab fa-spotify fa-2x"></i>
+          </a>
+          <a title="iTunes" href="https://www.itunes.com" class="mx-2">
+            <i class="fab fa-itunes fa-2x"></i>
+          </a>
+          <a title="Soundcloud" href="https://www.soundcloud.com" class="mx-2">
+            <i class="fab fa-soundcloud fa-2x"></i>
+          </a>
+        </div>
+      </div>
+      <aside class="col-sm-5">
+        <article class="card-body p-5">
+         <h3 class="title mb-3">Mi sueño</h3>
+        <dl class="item-property"></dl>
+          <dt>Trémolo Violenta</dt>
+        </dl></dl>
+        <br>
+        <dl class="param param-feature">
+          <dt>Género</dt>
+          <dd>Pop</dd>
+        </dl>  <!-- item-property-hor .// -->
+        <dl class="param param-feature">
+          <dt>País</dt>
+          <dd>Chile</dd>
+        </dl>  <!-- item-property-hor .// -->
+  <hr>
+    <div class="row">
+      <div class="col-sm-5">
+        <dl class="param param-inline">
+          <dt>Cantidad </dt>
+          <dd>
+            <input class="form-control form-control-sm" type="text" placeholder="10">
+          </dd>
+        </dl>  <!-- item-property .// -->
+      </div> <!-- col.// -->
+      <div class="col-sm-7">
+        <dl class="param param-inline">
+            <dt>Precio actual </dt>
+            <dd>$5 c/u</dd>
+        </dl>  <!-- item-property .// -->
+      </div> <!-- col.// -->
+    </div> <!-- row.// -->
+    <hr>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Comprar</button>
+  </article> <!-- card-body.// -->
+      </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+    <div class="container">
+      <div class="container">
+        <div id="chartContainer" style="height: 400px; width: 100%;"></div> <!-- gráfico -->
+      </div>
+      <br class="mt-2 mb-5">
+      <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Más canciones de este artista</h1>
+
+      <hr class="mt-2 mb-5">
+    
+      <div class="row text-center text-lg-left">
+        
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="imagebox">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="img-fluid" src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
+                  <span class="imagebox-desc">Canción 1</span>
+            </a>
+
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="imagebox">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="img-fluid" src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
+                  <span class="imagebox-desc">Canción 2</span>
+                </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="imagebox">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="img-fluid" src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
+                  <span class="imagebox-desc">Canción 3</span>
+                </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="imagebox">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="img-fluid" src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">
+                  <span class="imagebox-desc">Canción 4</span>
+                </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="imagebox">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="img-fluid" src="https://source.unsplash.com/sesveuG_rNo/400x300" alt="">
+                  <span class="imagebox-desc">Canción 5</span>
+                </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="imagebox">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="img-fluid" src="https://source.unsplash.com/AvhMzHwiE_0/400x300" alt="">
+                  <span class="imagebox-desc">Canción 6</span>
+                </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="imagebox">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="img-fluid" src="https://source.unsplash.com/2gYsZUmockw/400x300" alt="">
+                  <span class="imagebox-desc">Canción 7</span>
+                </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="imagebox">
+            <a href="#" class="d-block mb-4 h-100">
+                  <img class="img-fluid" src="https://source.unsplash.com/EMSDtjVHdQ8/400x300" alt="">
+                  <span class="imagebox-desc">Canción 8</span>
+                </a>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div> <!-- card.// bg-white -->
+  </div>
+
+
+  <!-- footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      <div class="social d-flex justify-content-center">
+        <a href="https://www.twitter.com" class="mx-2">
+          <i class="fab fa-twitter fa-2x"></i>
+        </a>
+        <a href="https://www.facebook.com/Talisman-Music-1953193684971869" class="mx-2">
+          <i class="fab fa-facebook-f fa-2x"></i>
+        </a>
+        <a href="https://www.instagram.com" class="mx-2">
+          <i class="fab fa-instagram fa-2x"></i>
+        </a>
+      </div>
+      <hr>
+      <a href="legal.html"> Legal</a>
+    </div>
+  
+    <div class="container">
+      Copyright &copy; tlsmn music 2020
+    </div>
+  </footer>
+
+    <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Contrato - Condiciones de la compra</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum nunc nisl. Mauris malesuada, ipsum vel congue pellentesque, sem nisl rutrum arcu, non aliquam metus risus sed turpis. Aliquam ac pellentesque nisl, sed ullamcorper mauris. Sed iaculis finibus lacinia. Proin quis mauris id lorem sagittis pulvinar. Sed varius iaculis risus id dictum. Nunc faucibus quam in odio pulvinar, nec venenatis sem lobortis. Suspendisse eget ipsum tellus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc lacinia risus at diam aliquet gravida. Sed elementum sodales viverra. Nullam in leo nec orci aliquet gravida quis commodo augue. Maecenas maximus lacus eget finibus cursus. Donec eu est sem. Aliquam erat volutpat.
+
+          Nullam non semper velit, id suscipit eros. Fusce in gravida justo. Etiam in leo ac diam faucibus consequat a vitae dui. Vestibulum accumsan, augue congue fermentum bibendum, risus velit facilisis turpis, non laoreet tellus erat non est. Donec consequat facilisis sem, ac pretium sapien malesuada non. Integer nisl metus, maximus vel sem ut, euismod aliquet elit. Aenean posuere lorem eu ante facilisis, in euismod ligula elementum. Nulla eu sapien elit. Donec at est ut metus vulputate suscipit in tristique nibh. Vivamus enim justo, semper id dolor sed, mattis fermentum nisl. Ut varius sit amet sapien non rhoncus. Mauris tempor justo vel semper rutrum. Nunc scelerisque, ligula nec pellentesque faucibus, mi ante venenatis ipsum, a aliquam felis purus vel ipsum. Donec vitae mauris nec felis pharetra sodales.
+
+          Aliquam odio lectus, pharetra et accumsan condimentum, hendrerit et sem. Vestibulum commodo lectus velit, eu auctor arcu lobortis eu. Nullam vitae pulvinar nibh. In hac habitasse platea dictumst. Phasellus eu tellus at augue accumsan placerat. Nulla semper lacus euismod, bibendum dolor at, vestibulum enim. Phasellus a enim neque. Suspendisse felis lorem, aliquam in viverra sit amet, molestie id risus.
+
+          Phasellus ullamcorper, nisi ac accumsan interdum, urna nisl congue libero, vitae consectetur sapien ex eget lorem. Vivamus vel ante et sapien faucibus lobortis in at lorem. Praesent condimentum, lacus id faucibus dictum, massa tellus eleifend ante, non euismod nulla ligula non eros. Vivamus congue dignissim viverra. In est nulla, egestas eu odio sit amet, facilisis molestie turpis. Morbi sagittis magna et lacus dignissim rutrum. In consequat libero lorem, vel dictum neque cursus a. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas a metus tellus.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button  type="button" class="pay-btn btn btn-primary">
+            <a class="text-white" href="payment.html">Aceptar y pagar</a> 
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      
+</body>
+</html>
